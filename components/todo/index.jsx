@@ -11,8 +11,8 @@ const index = () => {
       </div>
 
       <div className='overflow-y-scroll h-[80%] px-4 '>
-        {[1,1,1,1,1].map(()=>
-        <div className='flex items-center justify-between py-2 '>
+        {[1,2,3,4,5,6,7,8,9].map((a)=>
+        <div key={a} className='flex items-center justify-between py-2 '>
           
           <div className='flex items-center gap-3'>
             <input namw='radio-1' type='radio' className='radio radio-xs' />
