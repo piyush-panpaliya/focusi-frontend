@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Graph from '../components/graph'
+import Graph from '../components/Graph'
 import Timer from '../components/timer'
 import Music from '../components/music'
 import Buttons from '../components/buttons'
