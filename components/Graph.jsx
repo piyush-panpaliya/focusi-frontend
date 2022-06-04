@@ -57,7 +57,7 @@ const Graph = () => {
   };
 
   return (
-    <div className='border-2 border-white/50 rounded-lg  h-[30vh] p-4'>
+    <div className='border-2 border-white/50 rounded-lg  h-[30vh] p-4 '>
       <Line options={options} data={data} />
     </div>
   )

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
+    "axios": "^0.27.2",
     "chart.js": "^3.8.0",
     "daisyui": "^2.15.2",
     "next": "12.1.6",
@@ -18,8 +19,13 @@
     "react": "18.1.0",
     "react-chartjs-2": "^4.1.0",
     "react-charts": "^2.0.0-beta.7",
+    "react-clock": "^3.1.0",
+    "react-digital-clock": "^0.1.2",
     "react-dom": "18.1.0",
     "react-draggable": "^4.4.5",
+    "react-query": "^3.39.1",
+    "react-timer-hook": "^3.0.5",
+    "react-use-clock-hook": "^1.0.6",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
