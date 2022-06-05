@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import { AppContext } from '../../AppContext'
-const index = () => {
+const Index = () => {
   const {setUI,state,setps,setallUI}=useContext(AppContext)
   const handler=(a)=>{
     setUI(a,!(state.UI[a]))
@@ -17,4 +17,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
