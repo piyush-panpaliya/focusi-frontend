@@ -1,12 +1,11 @@
 import axios from "axios";
-
-const POST=async(body,url,method)=>{
-  const auth="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjliNTQ4NzFmMDZhYjJkMjhlNDc0MDYiLCJpYXQiOjE2NTQzNDY4ODgsImV4cCI6MTY2MjEyMjg4OH0.lsYdiE9GTUGkrHXabstEH6mCwl523TSOB7re9hW4Q6M"
-  const res = await axios({
-    medthod:method,
-    url:`sight-day.codedamn.app:1338/api/${url}`, 
-    data:body,
-    headers: {
+const URL="wherever-unknown.codedamn.app:1338"
+const POST=async(body,url)=>{
+  const auth=JSON.parse(localStorage.getItem("data")).jwt
+  const res = await axios.post(
+    `https://${URL}/api/${url}`, 
+    body,
+    {headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${auth}`,
@@ -16,10 +15,10 @@ const POST=async(body,url,method)=>{
 }
 
 const GET=async(url)=>{
-  const auth="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjliNTQ4NzFmMDZhYjJkMjhlNDc0MDYiLCJpYXQiOjE2NTQzNDY4ODgsImV4cCI6MTY2MjEyMjg4OH0.lsYdiE9GTUGkrHXabstEH6mCwl523TSOB7re9hW4Q6M"
+  const auth=localStorage.getItem("jwt")
   const res = await axios({
     medthod:"get",
-    url:`sight-day.codedamn.app:1338/api/${url}`, 
+    url:`https://${URL}/api/${url}`, 
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -28,4 +27,24 @@ const GET=async(url)=>{
   });
   return res;
 }
-export {POST,GET}
+const PUT=async(url)=>{
+  const auth=localStorage.getItem("jwt")
+  const res = await axios.put(
+    `https://${URL}/api/${url}`, null,
+    { headers: {
+      Authorization: `Bearer ${auth}`,
+    },
+  });
+  return res;
+}
+const DEL=async(url)=>{
+  const auth=localStorage.getItem("jwt")
+  const res = await axios.delete(
+    `https://${URL}/api/${url}`,
+    { headers: {
+      Authorization: `Bearer ${auth}`,
+    },
+  });
+  return res;
+}
+export {POST,GET,PUT,DEL}
