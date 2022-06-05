@@ -38,7 +38,7 @@ const Index = () => {
   useEffect(()=>{},[state])
   return (
     <div className='flex justify-center w-full mt-2'>
-      <div className='rounded-xl bg-[#212529]/[10%] backdrop-blur-sm h-[23vh] flex items-center justify-between gap-x-2 p-3'>
+      <div className='rounded-xl bg-[#212529]/[10%] backdrop-blur-sm h-[23vh] flex items-center justify-between gap-x-2 py-3 px-5 2xl:py-8'>
 
       <button disabled={state===0} onClick={()=>handle("minus")}><img draggable={false}  src='/svg/left.svg' className='w-6 lg:w-8'/></button>
       <iframe className='rounded-xl bg-transparent h-[80%] w-[65%] lg:h-[90%]'  scrolling="no" frameBorder="no" allow="autoplay" 

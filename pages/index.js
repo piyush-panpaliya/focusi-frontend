@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className='relative h-screen w-screen  overflow-hidden'>
       <Fade when={state.pomodoroStatus}>
-      <img draggable={false}  src="/svg/bgp.png" className='max-w-none xl:max-w-[100vw]   left-0 z-[-11] absolute '/>
+      <img draggable={false}  src="/svg/bgp.png" className='max-w-none xl:max-w-[100vw] lg:top-[-8rem]   left-0 z-[-11] absolute '/>
       </Fade>
       <Fade when={!state.pomodoroStatus}>
         <img draggable={false}  src='/svg/bg2.png' className='max-w-none xl:max-w-[100vw] top-[-40rem] xl:top-[-12rem] left-0 z-[-10] absolute '/>
