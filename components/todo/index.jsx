@@ -1,71 +1,78 @@
 import React,{useContext,useState} from 'react'
 import { AppContext } from '../../AppContext'
-import {useQuery} from 'react-query'
 import {POST,GET,PUT,DEL} from '../../apihelper'
+import useSWR,{mutate} from 'swr'
+import {v4 as uuidv4} from 'uuid'
+import Fade from 'react-reveal/Fade';
+
 const Index = () => {
-  const {state,settask} = useContext(AppContext)
+  const {state,settask,setalltask,deltask,updatetask,edittask} = useContext(AppContext)
   const [task, setState] = useState('')
   const [selected, setSelected] = useState()
   const [open, setopen] = useState(false)
-  // const {data, isLoading } = useQuery('gettask',()=> GET("todo"))
+  const {data, isLoading } = useSWR('gettask',()=> GET("todo"),{initialData:state.tasks,revalidateOnFocus:false})
   const handleEdit=(e)=>{
     e.preventDefault()
-    //api call
- 
+    edittask(selected._id,selected.title)
+    PUT(`todo/${selected._id}/title`,{title:selected.title})
+    mutate('gettask')
   }
-  const data=""
-  const handleSave=(e)=>{
+
+
+  const handleSave=async(e)=>{
     e.preventDefault()
-    console.log(task)
-    //api
-    POST({title:task},"todo","post")
-    // mutate()
-    settask({title:task})  
+    settask({title:task,completed:false,_id:uuidv4()}) 
+    POST({title:task},`todo`)
     setopen(false)
     setState('')
+    const data=await mutate('gettask')
+    setalltask(data.data.todos)
   } 
-
+  
   const handleDone=(a)=>{
-    //api
+    updatetask(a)
     PUT(`todo/${a}/status`)
-    //mutate()
-
+    mutate('gettask')
+    
   }
-  const handleDel=(a)=>{
-    //api
+  const handleDel=async(a)=>{
+    deltask(a)
     DEL(`todo/${a}`)
-    //mutate()
-
+    mutate('gettask')
   }
 
   return (
+    <Fade left duration={900} distance="50px" when={state.UI.todo}>
     <div className='bg-[#212529]/75 rounded-lg  h-full py-4'>
       
       <div className='h-[20%] flex justify-center items-center gap-3  px-4'>
-        <button><img className='w-6' src='/svg/edit.svg'/></button>
+        {/* <button><img className='w-6' src='/svg/edit.svg'/></button> */}
         <p className='text-2xl text-white/50'>Tasks</p>
         <button onClick={()=>setopen(!open)}><img className='w-6 focus:outline-none' src='/svg/new.svg'/></button>
       </div>
 
       <div className='overflow-y-scroll overflow-x-hidden h-[80%] px-4 '>
 
-        {open&&<form onSubmit={handleSave} className='flex items-center'>
-          <input value={task} onChange={e=>setState(e.target.value)} className='bg-[#212529]/80 focus:outline-none rounded-lg p-2 pr-4 w-full relative'/>
+        {open&&<form onSubmit={handleSave} className='flex items-center relative'>
+          <input value={task} onChange={e=>setState(e.target.value)} className=' bg-[#212529]/80 focus:outline-none rounded-lg p-2 pr-4 w-full relative'/>
           <button type='submit' className='w-4 h-4 bg-white absolute right-1 focus:outline-none'/>
         </form>}
 
-        {data&&data.data.todos?.map((a)=>!a.completed&&
+        {state.task&&state.task?.reverse().map((a)=>!a.completed&&
         <div  key={a._id} className='flex items-center justify-between py-2 '>
-          <div className='flex items-center gap-3'>
-            <input namw='radio-1' type='radio' className='radio radio-xs' />
+          <form onSubmit={(e)=>handleEdit(e)} className='flex items-center gap-3'>
+            {/* <input namw='radio-1' type='radio' className='radio radio-xs' /> */}
             <input 
-            value={a.title} 
+            value={selected&&selected._id===a._id?selected.title:a.title} 
+            // onClick={()=>)}
             onChange={e=>{
               setSelected(a)
-              setState(e.target.value)
+              setSelected(pstate=>{
+                return{...pstate,title:e.target.value}
+              })
             }} 
             className='text-lg text-white/50 bg-transparent focus:outline-none'/>
-          </div>
+          </form>
 
           <div className='flex items-center gap-1'>
             <button onClick={()=>handleDone(a._id)}><img className='w-6 focus:outline-none' src='/svg/done.svg'/></button>
@@ -74,10 +81,10 @@ const Index = () => {
 
         </div>
         )}
-        {data&&data.data.todos?.map((a)=>a.completed&&
+        {state.task&&state.task?.reverse().map((a)=>a.completed&&
         <div  key={a._id} className='flex items-center justify-between py-2 '>
           <div className='flex items-center gap-3'>
-            <input namw='radio-1' type='radio' className='radio radio-xs' />
+            {/* <input namw='radio-1' type='radio' className='radio radio-xs' /> */}
             <p className='text-lg text-white/50 bg-transparent focus:outline-none line-through'>{a.title}</p>
           </div>
 
@@ -89,6 +96,7 @@ const Index = () => {
         )}
       </div>
     </div>
+    </Fade>
   )
 }
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL="wherever-unknown.codedamn.app:1338"
+const URL="yet-population.codedamn.app:1338"
 const POST=async(body,url)=>{
   const auth=JSON.parse(localStorage.getItem("data")).jwt
   const res = await axios.post(
@@ -15,7 +15,7 @@ const POST=async(body,url)=>{
 }
 
 const GET=async(url)=>{
-  const auth=localStorage.getItem("jwt")
+  const auth=JSON.parse(localStorage.getItem("data")).jwt
   const res = await axios({
     medthod:"get",
     url:`https://${URL}/api/${url}`, 
@@ -27,10 +27,10 @@ const GET=async(url)=>{
   });
   return res;
 }
-const PUT=async(url)=>{
-  const auth=localStorage.getItem("jwt")
+const PUT=async(url,body)=>{
+  const auth=JSON.parse(localStorage.getItem("data")).jwt
   const res = await axios.put(
-    `https://${URL}/api/${url}`, null,
+    `https://${URL}/api/${url}`, body?body:null,
     { headers: {
       Authorization: `Bearer ${auth}`,
     },
@@ -38,7 +38,7 @@ const PUT=async(url)=>{
   return res;
 }
 const DEL=async(url)=>{
-  const auth=localStorage.getItem("jwt")
+  const auth=JSON.parse(localStorage.getItem("data")).jwt
   const res = await axios.delete(
     `https://${URL}/api/${url}`,
     { headers: {

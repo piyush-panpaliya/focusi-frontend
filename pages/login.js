@@ -17,7 +17,7 @@ const Login = () => {
     }
   }
   useEffect(()=>{
-    if(state.jwt){
+    if(JSON.parse(localStorage.getItem("data")).jwt){
       router.push("/")
     }
   },[])

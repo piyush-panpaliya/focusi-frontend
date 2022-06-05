@@ -14,12 +14,10 @@ const allUI={
   todo:false
 }
 const defaultData={
-  jwt:undefined,
+  jwt:null,
   user:null,
-  task:[],
-  break:[],
-  session:[],
   score:[],
+  task:[],
   pomodoroStatus:false,
   leaderboard:[],
   notes:"",
@@ -43,7 +41,7 @@ const AppContextProvider = ({
 
 
   useEffect(()=>{
-    if(state.jwt!==null){
+    if(typeof state.jwt!=="object"){
       localStorage.setItem("data",JSON.stringify(state));
     }
   },[state])
@@ -51,8 +49,35 @@ const AppContextProvider = ({
   const deepSetjwt = jwt =>setState(prevState => ({ ...prevState, jwt: jwt }));
   const deepSetuser = username =>setState(prevState => ({ ...prevState, user: username }));
   const deepSettask = task =>setState(prevState => ({ ...prevState, task: [...prevState.task,task] }));
+  const deepDeltask = task =>setState(prevState => ({ ...prevState, task: prevState.task.filter(t=>t._id!==task) }));
+  const deepSetalltask = task =>setState(prevState => ({ ...prevState, task: task }));
+  const deeputask = task =>{
+    setState(prevState =>{ 
+      return (
+        { ...prevState, 
+          task: prevState.task.map(t=>{
+            return( 
+              t._id===task?{...t,completed:true}:t
+            )
+          })
+        }
+      )
+    })
+  }
+  const deepedittask = (task,title) =>{
+    setState(prevState =>{ 
+      return (
+        { ...prevState, 
+          task: prevState.task.map(t=>{
+            return( 
+              t._id===task?{...t,title:title}:t
+            )
+          })
+        }
+      )
+    })
+  }
   const deepSetbreak = b =>setState(prevState => ({ ...prevState, break: b }));
-  const deepSetsession = session =>setState(prevState => ({ ...prevState, session: session }));
   const deepSetscore = score =>setState(prevState => ({ ...prevState, score: score }));
   const deepSetps = ps =>setState(prevState => ({ ...prevState, pomodoroStatus: ps }));
   const deepSetlb = lb =>setState(prevState => ({ ...prevState, leaderboard: lb }));
@@ -69,8 +94,10 @@ const AppContextProvider = ({
         setjwt: deepSetjwt,
         setuser: deepSetuser,
         settask: deepSettask,
-        setbreak: deepSetbreak,
-        setsession: deepSetsession,
+        setalltask:deepSetalltask,
+        updatetask:deeputask,
+        deltask:deepDeltask,
+        edittask:deepedittask,
         setscore: deepSetscore,
         setps: deepSetps,
         setallUI:deepSetallUI,

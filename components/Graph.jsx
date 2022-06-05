@@ -1,16 +1,16 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-
+import Fade from 'react-reveal/Fade';
+import { AppContext } from '../AppContext';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 const Graph = () => {
-  
+  const {state}=useContext(AppContext)
   const options = {
     responsive: true,
     scales: {
@@ -50,16 +50,18 @@ const Graph = () => {
     datasets: [
       {
         data: [35,41,55,22,33,54,34],
-        borderColor: '#00A0B1',
+        borderColor: 'black',
         backgroundColor: '#00A0B1',
       }
     ],
   };
 
   return (
-    <div className='border-2 border-white/50 rounded-lg  h-full p-4 '>
-      <Line options={options} data={data} />
-    </div>
+    <Fade left duration={900} distance="50px"  when={state.UI.graph}>
+      <div className='border-2 border-black/50 rounded-lg  h-full p-4 '>
+        <Line options={options} data={data} />
+      </div>
+    </Fade>
   )
 }
  

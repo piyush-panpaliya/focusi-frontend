@@ -1227,6 +1227,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+howler@^2.2.1:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.3.tgz#a2eff9b08b586798e7a2ee17a602a90df28715da"
+  integrity sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==
+
 ignore@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
@@ -1830,7 +1835,7 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -1938,6 +1943,13 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-mount-animation@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/react-mount-animation/-/react-mount-animation-0.0.11.tgz#c3bebde055e28bd45d89f4f9804e8efe29166f6c"
+  integrity sha512-t8ueG3dq2XFE8QxNyBHvtOk3LViaaO3aB5sCc9FCO2Xfy0Oz2HX983kcnmFeQK6zJgCM7jZHWRYl3Bo6/jrmvg==
+  dependencies:
+    react "^17.0.1"
+
 react-query@^3.39.1:
   version "3.39.1"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.1.tgz#3876c0fdac7a3b5a84e195534e5fa8fbdd628847"
@@ -1947,10 +1959,24 @@ react-query@^3.39.1:
     broadcast-channel "^3.4.1"
     match-sorter "^6.0.2"
 
+react-reveal@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-reveal/-/react-reveal-1.2.2.tgz#f47fbc44debc4c185ae2163a215a9e822c7adfef"
+  integrity sha512-JCv3fAoU6Z+Lcd8U48bwzm4pMZ79qsedSXYwpwt6lJNtj/v5nKJYZZbw3yhaQPPgYePo3Y0NOCoYOq/jcsisuw==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-timer-hook@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/react-timer-hook/-/react-timer-hook-3.0.5.tgz#a8d930f99b180cd88da245965a26a17df3e7457b"
   integrity sha512-n+98SdmYvui2ne3KyWb3Ldu4k0NYQa3g/VzW6VEIfZJ8GAk/jJsIY700M8Nd2vNSTj05c7wKyQfJBqZ0x7zfiA==
+
+react-use-audio-player@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/react-use-audio-player/-/react-use-audio-player-1.2.6.tgz#e50b6183029493c693c89e5822f8530b7648e864"
+  integrity sha512-ukFF5WOxsFYd44AaPXzFI4HltWaPD68+iJ9aDicn9FRBJ5poJUPO/WjFl5nk0tRYiyve3z711Oz79LYzCahhFQ==
+  dependencies:
+    howler "^2.2.1"
 
 react-use-clock-hook@^1.0.6:
   version "1.0.6"
@@ -2200,6 +2226,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+swr@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.3.0.tgz#c6531866a35b4db37b38b72c45a63171faf9f4e8"
+  integrity sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==
 
 tailwindcss@^3.0, tailwindcss@^3.0.24:
   version "3.0.24"

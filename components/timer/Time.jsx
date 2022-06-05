@@ -78,21 +78,21 @@ const Time = () => {
     if (clicked==="work"&&active!=="work"){
       if(a==="plus"){
         setTime((t)=>{
-          return {...t,work:t.work+20}
+          return {...t,work:t.work+60}
         })
       }else if(a==="minus"){
         setTime((t)=>{
-          return {...t,work:t.work-20}
+          return {...t,work:t.work-60}
         })
       }
     }else if(clicked==="break"&&active!=="break"){
       if(a==="plus"){
         setTime((t)=>{
-          return {...t,break:t.break+20}
+          return {...t,break:t.break+60}
         })
       }else if(a==="minus"){
         setTime((t)=>{
-          return {...t,break:t.break-20}
+          return {...t,break:t.break-60}
         })
       }
     }

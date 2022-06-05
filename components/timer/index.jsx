@@ -1,14 +1,22 @@
 import React,{useContext} from 'react'
 import { AppContext } from '../../AppContext'
 import Time from './Time'
+import Fade from 'react-reveal/Fade';
+
 
 const Index = () => {
   const {state}=useContext(AppContext)
-  return (
-    <div  className={' px-3  flex flex-col justify-center items-center w-[80%] '+(state.pomodoroStatus?"mt-[15vh]":"border-2 border-white/50 rounded-2xl")}>
-      {/* style={{borderImage:`url("/svg/bg.svg")`,borderImageWidth:"30px"}} */}
-      <Time/>
-    </div>
+  return (state.pomodoroStatus?
+    <Fade duration={2000} >
+      <div  className=' px-3   flex flex-col justify-center items-center w-[80%] mt-[15vh]'>
+        <Time/>
+      </div>
+    </Fade>:
+    <Fade duration={2000} >
+      <div  className=' px-3  flex flex-col justify-center items-center w-[80%] border-2 border-[#00D1FF]/50 rounded-2xl'>
+        <Time/>
+      </div>
+    </Fade>
   )
 }
 
