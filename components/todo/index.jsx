@@ -47,21 +47,22 @@ const Index = () => {
       
       <div className='h-[20%] flex justify-center items-center gap-3  px-4'>
         {/* <button><img className='w-6' src='/svg/edit.svg'/></button> */}
-        <p className='text-2xl text-white/50'>Tasks</p>
+        <p className='text-2xl 2xl:text-3xl text-white/50'>Tasks</p>
         <button onClick={()=>setopen(!open)}><img className='w-6 focus:outline-none' src='/svg/new.svg'/></button>
       </div>
 
       <div className='overflow-y-scroll overflow-x-hidden h-[80%] px-4 '>
 
         {open&&<form onSubmit={handleSave} className='flex items-center relative'>
-          <input value={task} onChange={e=>setState(e.target.value)} className=' bg-[#212529]/80 focus:outline-none rounded-lg p-2 pr-4 w-full relative'/>
-          <button type='submit' className='w-4 h-4 bg-white absolute right-1 focus:outline-none'/>
+          <input value={task} onChange={e=>setState(e.target.value)} className=' bg-[#212529]/80 focus:outline-none border-2 border-white/50 rounded-lg p-2 pr-9 w-full relative 2xl:text-lg'/>
+          <button type='submit' className=' absolute right-1 focus:outline-none'><img className='w-8 h-8' src='/svg/tick.svg'/></button>
         </form>}
 
-        {state.task&&state.task?.reverse().map((a)=>!a.completed&&
+        {state.task&&state.task?.reverse().map((a,n)=>!a.completed&&
         <div  key={a._id} className='flex items-center justify-between py-2 '>
           <form onSubmit={(e)=>handleEdit(e)} className='flex items-center gap-3'>
             {/* <input namw='radio-1' type='radio' className='radio radio-xs' /> */}
+            <p  className='text-lg 2xl:text-2xl'>{n+1}.</p>
             <input 
             value={selected&&selected._id===a._id?selected.title:a.title} 
             // onClick={()=>)}
@@ -71,25 +72,25 @@ const Index = () => {
                 return{...pstate,title:e.target.value}
               })
             }} 
-            className='text-lg text-white/50 bg-transparent focus:outline-none'/>
+            className='text-lg 2xl:text-2xl text-white/50 bg-transparent focus:outline-none'/>
           </form>
 
           <div className='flex items-center gap-1'>
-            <button onClick={()=>handleDone(a._id)}><img className='w-6 focus:outline-none' src='/svg/done.svg'/></button>
-            <button onClick={()=>handleDel(a._id)}><img className='w-6 focus:outline-none' src='/svg/delete.svg'/></button>
+            <button onClick={()=>handleDone(a._id)}><img className='w-6 2xl:w-8 focus:outline-none ' src='/svg/done.svg'/></button>
+            <button onClick={()=>handleDel(a._id)}><img className='w-6 2xl:w-8 focus:outline-none ' src='/svg/delete.svg'/></button>
           </div>
 
         </div>
         )}
-        {state.task&&state.task?.reverse().map((a)=>a.completed&&
-        <div  key={a._id} className='flex items-center justify-between py-2 '>
+        {state.task&&state.task?.reverse().map((a,n)=>a.completed&&
+        <div  key={a._id} className='flex items-center justify-between py-2 mt-2'>
           <div className='flex items-center gap-3'>
             {/* <input namw='radio-1' type='radio' className='radio radio-xs' /> */}
-            <p className='text-lg text-white/50 bg-transparent focus:outline-none line-through'>{a.title}</p>
+            <p className='ml-2 text-lg 2xl:text-2xl text-white/50 bg-transparent focus:outline-none line-through'>{a.title}</p>
           </div>
 
           <div className='flex items-center gap-1'>
-            <button onClick={()=>handleDel(a._id)}><img className='w-6' src='/svg/delete.svg'/></button>
+            <button onClick={()=>handleDel(a._id)}><img className='w-6 2xl:w-8' src='/svg/delete.svg'/></button>
           </div>
 
         </div>

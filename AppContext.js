@@ -14,7 +14,7 @@ const allUI={
   todo:false
 }
 const defaultData={
-  jwt:null,
+  jwt:false,
   user:null,
   score:[],
   task:[],

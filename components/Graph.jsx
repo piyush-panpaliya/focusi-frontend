@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useEffect} from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,6 +11,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import Fade from 'react-reveal/Fade';
 import { AppContext } from '../AppContext';
+import useSWR from 'swr';
+import { GET } from '../apihelper';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -21,7 +23,16 @@ ChartJS.register(
 );
 
 const Graph = () => {
-  const {state}=useContext(AppContext)
+  const {state,setlb}=useContext(AppContext)
+  const {res} = useSWR('lb',()=>GET('leaderboard/weekly'),{revalidateOnFocus:false})
+  useEffect(()=>{
+    if(res){
+      // setlb(res.data.graphData[0].pomodoros.map(a=>{
+      //   return{label:a.date,score:a.}
+      // }))
+      console.log(res.data)
+    }
+  },[res])
   const options = {
     responsive: true,
     scales: {
@@ -50,7 +61,7 @@ const Graph = () => {
     datasets: [
       {
         data: [35,41,55,22,33,54,34],
-        borderColor: 'black',
+        borderColor: state.pomodoroStatus?"white":'black',
         backgroundColor: '#00A0B1',
       }
     ],
@@ -58,7 +69,7 @@ const Graph = () => {
 
   return (
     <Fade left duration={900} distance="50px"  when={state.UI.graph}>
-      <div className='border-2 border-black/50 rounded-lg  h-full p-4 '>
+      <div className={'  rounded-lg  h-full p-4 '+(state.pomodoroStatus?"bg-[#212529]/80 border-0":"border-black/50 border-2")}>
         <Line options={options} data={data} />
       </div>
     </Fade>

@@ -8,7 +8,7 @@ const Index = () => {
   const {state}=useContext(AppContext)
   return (state.pomodoroStatus?
     <Fade duration={2000} >
-      <div  className=' px-3   flex flex-col justify-center items-center w-[80%] mt-[15vh]'>
+      <div  className=' px-3   flex flex-col justify-center items-center w-[80%] mt-[23vh]'>
         <Time/>
       </div>
     </Fade>:

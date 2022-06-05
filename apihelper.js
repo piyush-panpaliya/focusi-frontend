@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL="yet-population.codedamn.app:1338"
+const URL="pomo-hackfest.herokuapp.com"
 const POST=async(body,url)=>{
   const auth=JSON.parse(localStorage.getItem("data")).jwt
   const res = await axios.post(

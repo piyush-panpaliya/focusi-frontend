@@ -8,8 +8,7 @@ const Login = () => {
   const [data, setdata] = useState({name:"",username:"",password:""})
   const handle=async(e)=>{
     e.preventDefault()
-    console.log(data)
-    const res= await fetch("https://roll-bag.codedamn.app:1338/api/auth/register",{method:"post",body:JSON.stringify(data),headers:{'Content-Type':'application/json'}})
+    const res= await fetch("https://pomo-hackfest.herokuapp.com/api/auth/register",{method:"post",body:JSON.stringify(data),headers:{'Content-Type':'application/json'}})
     if (res.ok){
       console.log("ok")
       setuser(res.data.user)
