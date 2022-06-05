@@ -3,7 +3,7 @@ import { AppContext } from '../../AppContext'
 import {useQuery} from 'react-query'
 import { GET } from '../../apihelper'
 
-const index = () => {
+const Index = () => {
   const {data, isLoading } = useQuery('getlb',()=> GET("leaderboard/daily"))
   return (
     <div className='bg-[#212529]/75 rounded-lg  h-full p-4 flex flex-col items-center'>
@@ -18,4 +18,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

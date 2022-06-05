@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import { AppContext } from '../../AppContext'
 import Time from './Time'
 
-const index = () => {
+const Index = () => {
   const {state}=useContext(AppContext)
   return (
     <div  className={' px-3  flex flex-col justify-center items-center w-[80%] '+(state.pomodoroStatus?"mt-[15vh]":"border-2 border-white/50 rounded-2xl")}>
@@ -12,4 +12,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

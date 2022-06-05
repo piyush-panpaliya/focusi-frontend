@@ -2,7 +2,7 @@ import React,{useContext,useState} from 'react'
 import { AppContext } from '../../AppContext'
 import {useQuery} from 'react-query'
 import {POST,GET,PUT,DEL} from '../../apihelper'
-const index = () => {
+const Index = () => {
   const {state,settask} = useContext(AppContext)
   const [task, setState] = useState('')
   const [selected, setSelected] = useState()
@@ -92,5 +92,5 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
 

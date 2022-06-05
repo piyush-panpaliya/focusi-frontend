@@ -1,6 +1,6 @@
 import React from 'react'
 
-const index = () => {
+const Index = () => {
   return (
     <div className='bg-[#212529]/75 rounded-lg flex flex-col h-full p-4'>
       <p className='text-2xl text-center mb-4'>Notes</p>
@@ -9,4 +9,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
