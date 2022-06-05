@@ -46,3 +46,14 @@ a {
   .rounded-2xl {
     border-radius: 1rem/* 16px */;
   }
+
+  *:focus {
+    outline: 0 !important;
+}
+* {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}

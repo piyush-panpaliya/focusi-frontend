@@ -41,7 +41,7 @@ const AppContextProvider = ({
 
 
   useEffect(()=>{
-    if(typeof state.jwt!=="object"){
+    if(state.jwt!==false){
       localStorage.setItem("data",JSON.stringify(state));
     }
   },[state])

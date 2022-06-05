@@ -23,9 +23,9 @@ const Login = () => {
   },[])
   return (
     <div className='w-screen h-screen  flex flex-col items-center justify-center relative overflow-hidden'>
-      <img src='/svg/bg2.svg' className='h-[200%] absolute z-[-1] '/>
+      <img draggable={false}  src='/svg/bg2.png' className='h-[200%] absolute z-[-1] '/>
       <div className='flex flex-col justify-center items-center  py-8 px-12 rounded-2xl border-2 border-white/50'>
-        <img src='/svg/logo.svg'/> 
+        <img draggable={false}  src='/svg/logo.svg'/> 
         <p className='mt-8 mb-8 text-5xl text-white font-extralight'>Sign Up</p>
         <form onSubmit={handle} className='flex flex-col items-center'> 
           <p className='w-full text-xl text-white/50 mt-4 mb-1'>Name</p>
@@ -34,7 +34,7 @@ const Login = () => {
           <input value={data.username} onChange={e=>setdata({...data,username:e.target.value})}  type='text' className='w-[300px] border-2 border-white/50 rounded-lg px-4 py-2 bg-transparent text-white/50 focus:outline-none'/>
           <p className='w-full text-xl text-white/50 mt-4 mb-1'>Password</p>
           <input value={data.password} onChange={e=>setdata({...data,password:e.target.value})}  type='password' className='w-[300px] border-2 border-white/50 rounded-lg px-4 py-2 bg-transparent text-white/50 focus:outline-none'/>  
-          <button className='w-56 py-3 px-4 rounded-xl text-2xl mt-12 border-2 border-white/75'>SignUp</button>
+          <button className='w-56 py-3 px-4 rounded-xl text-2xl mt-12 border-2 border-white/75 text-white'>SignUp</button>
         </form> 
       </div>
     </div>

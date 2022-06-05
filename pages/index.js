@@ -18,7 +18,8 @@ export default function Home() {
   const { state } = useContext(AppContext)
   const router=useRouter()
   useEffect(() => {
-    if(!state.jwt){
+    const value=JSON.parse(localStorage.getItem('data'))&&JSON.parse(localStorage.getItem('data')).jwt
+    if(!value){
       router.push("/login")
     }
   }, [])
@@ -26,10 +27,10 @@ export default function Home() {
   return (
     <div className='relative h-screen w-screen  overflow-hidden'>
       <Fade when={state.pomodoroStatus}>
-      <img src="/svg/bgp.png" className='max-w-none xl:max-w-[100vw] top-[-] lg:top-[-8rem] left-0 z-[-11] absolute '/>
+      <img draggable={false}  src="/svg/bgp.png" className='max-w-none xl:max-w-[100vw]   left-0 z-[-11] absolute '/>
       </Fade>
       <Fade when={!state.pomodoroStatus}>
-        <img src='/svg/bg2.svg' className='max-w-none xl:max-w-[100vw] top-[-40rem] xl:top-[-8rem] left-0 z-[-10] absolute '/>
+        <img draggable={false}  src='/svg/bg2.png' className='max-w-none xl:max-w-[100vw] top-[-40rem] xl:top-[-12rem] left-0 z-[-10] absolute '/>
       </Fade>
     <div className="w-full h-full overflow-y-scroll lg:overflow-hidden flex flex-col  p-4" >
       <Head>
@@ -38,7 +39,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='flex items-center sm:grid grid-cols-10  p-4 place-items-center gap-8'>
-          <img className='col-span-3 h-4 sm:h-12  ' src='/svg/logo.svg' />
+          <img draggable={false}  className='col-span-3 h-4 sm:h-12  ' src='/svg/logo.svg' />
           <Gsearrch/>
           <Time/>
       </div>

@@ -13,7 +13,7 @@ const Index = () => {
       </div>
     </Fade>:
     <Fade duration={2000} >
-      <div  className=' px-3  flex flex-col justify-center items-center w-[80%] border-2 border-[#00D1FF]/50 rounded-2xl'>
+      <div  className=' px-3  flex flex-col justify-center items-center w-[80%] border-[5px] border-[#00D1FF]/50 rounded-[50px]'>
         <Time/>
       </div>
     </Fade>

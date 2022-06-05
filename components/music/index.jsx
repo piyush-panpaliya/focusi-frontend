@@ -38,12 +38,12 @@ const Index = () => {
   useEffect(()=>{},[state])
   return (
     <div className='flex justify-center w-full mt-2'>
-      <div className='rounded-xl border-white/50 border-4  h-[23vh] flex items-center justify-between gap-x-2 p-2'>
+      <div className='rounded-xl bg-[#212529]/[10%] backdrop-blur-sm h-[23vh] flex items-center justify-between gap-x-2 p-3'>
 
-      <button disabled={state===0} onClick={()=>handle("minus")}><img src='/svg/left.svg' className='w-6 lg:w-8'/></button>
-      <iframe className='rounded-xl bg-transparent h-[85%] w-[70%] lg:h-full'  scrolling="no" frameBorder="no" allow="autoplay" 
+      <button disabled={state===0} onClick={()=>handle("minus")}><img draggable={false}  src='/svg/left.svg' className='w-6 lg:w-8'/></button>
+      <iframe className='rounded-xl bg-transparent h-[80%] w-[65%] lg:h-[90%]'  scrolling="no" frameBorder="no" allow="autoplay" 
       src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${tracks[state]}&color=%231a1a2c&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false`}/>
-      <button disabled={state===(tracks.length-1)} onClick={()=>handle("plus")}><img src='/svg/right.svg' className='w-6 lg:w-8'/></button>
+      <button disabled={state===(tracks.length-1)} onClick={()=>handle("plus")}><img draggable={false}  src='/svg/right.svg' className='w-6 lg:w-8'/></button>
       </div>
     </div>
   )
