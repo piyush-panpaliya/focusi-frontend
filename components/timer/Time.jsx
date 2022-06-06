@@ -57,11 +57,11 @@ const Time = () => {
       reset();
       if(active==="work"){
         setTime((t)=>{
-          return {...t,work:1500}
+          return {...t,work:300}
         })
       }else if(active==="break"){
         setTime((t)=>{
-          return {...t,break:300}
+          return {...t,break:60}
         })
       }
     } else {
@@ -111,11 +111,11 @@ const Time = () => {
         <p className='text-white text-2xl lg:text-4xl'>{active==='break'?formatter(timeLeft).seconds:formatter(time.break).seconds}</p>
       </div>
       <div className='flex items-center justify-between gap-4'>
-        <button onClick={()=>toggleTime("minus")}><img draggable={false}  src='/svg/minus.svg' className=' w-8 lg:w-16' /></button>
+        <button disabled={clicked==="work"?time.work<=300:time.break<=60} onClick={()=>toggleTime("minus")}><img draggable={false}  src='/svg/minus.svg' className=' w-8 lg:w-16' /></button>
         <button onClick={toggleTimer} className=' border-[4px] border-white rounded-lg w-[80px] h-12 lg:w-[120px] lg:h-16 text-white text-lg lg:text-2xl text-center align-middle'>
           {ticking?'STOP':'START'}  
         </button>
-        <button onClick={()=>toggleTime("plus")}><img draggable={false}  src='/svg/plus.svg' className=' w-8 lg:w-16' /></button>
+        <button  onClick={()=>toggleTime("plus")}><img draggable={false}  src='/svg/plus.svg' className=' w-8 lg:w-16' /></button>
     </div>
     </div>:
       <div className='flex justify-center gap-2 w-fit  '>

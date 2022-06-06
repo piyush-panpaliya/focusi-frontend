@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 export default function usePomodoro({ inputTime,clicked, onStart, onStop, onComplete }) {
   const timerId = useRef(null);
   const [active, setActive] = useState("idle");
-  const time = clicked==="work"?inputTime.work:inputTime.break;
+  const time = clicked==="work"?(inputTime.work>=300?inputTime.work:300):(inputTime.break>=60?inputTime.break:60);
   const [progress, setProgress] = useState(0);
   const [timeLeft, setTime] = useState(time);
   const [ticking, setTicking] = useState(false);
