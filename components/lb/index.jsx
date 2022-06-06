@@ -13,7 +13,7 @@ const Index = () => {
       return{name:a.name,workEfficiency:a.workEfficiency}
     }))
   }
-  const {data } = useSWR('getlb',()=> fetch(),{revalidateOnFocus:false})
+  useSWR('getlb',()=> fetch(),{revalidateOnFocus:false})
   
   return (
     <Fade right duration={900} distance="50px"  when={state.UI.lb}>

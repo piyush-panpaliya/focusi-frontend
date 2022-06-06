@@ -21,18 +21,23 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
 
 const Graph = () => {
-  const {state,setlb}=useContext(AppContext)
-  const {res} = useSWR('lb',()=>GET('leaderboard/weekly'),{revalidateOnFocus:false})
-  useEffect(()=>{
-    if(res){
-      // setlb(res.data.graphData[0].pomodoros.map(a=>{
-      //   return{label:a.date,score:a.}
-      // }))
-      console.log(res.data)
+  const {state}=useContext(AppContext)
+  const [graph,setGraph]=React.useState([])
+  useSWR('lb',async()=>{
+    const res=await GET('pomodoro/status/weekly')
+    if(res.status===200){
+      setGraph(res.data.graphData.map(a=>{
+        return {label:a.date,score:a.workEfficiency}
+      }))
     }
-  },[res])
+  },{revalidateOnFocus:true})
+
   const options = {
     responsive: true,
     scales: {
@@ -54,13 +59,16 @@ const Graph = () => {
       }
     }
   };
-  const labels = ['day 1', 'day 2', 'day 3', 'day 4', 'day 5', 'day 6', 'day 7'];
-
+  const labels = graph&& graph.length>1?graph.map(a=>{
+    const date=new Date(a.label)
+    return (date.getDate(),10?"0"+date.getDate():date.getDate())+"/"+monthNames[date.getMonth()]
+  }): ['day 1', 'day 2', 'day 3', 'day 4', 'day 5', 'day 6', 'day 7'];
+  const datas = graph&& graph.length>1?graph.map(a=>a.score): ["50", "55", "50", "55", "50", "55", "50"];
   const data = {
     labels,
     datasets: [
       {
-        data: [35,41,55,22,33,54,34],
+        data: datas,
         borderColor: state.pomodoroStatus?"white":'black',
         backgroundColor: '#00A0B1',
       }

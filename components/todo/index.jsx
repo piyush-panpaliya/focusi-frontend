@@ -4,13 +4,15 @@ import {POST,GET,PUT,DEL} from '../../apihelper'
 import useSWR,{mutate} from 'swr'
 import {v4 as uuidv4} from 'uuid'
 import Fade from 'react-reveal/Fade';
+import react from 'react'
 
 const Index = () => {
   const {state,settask,setalltask,deltask,updatetask,edittask} = useContext(AppContext)
   const [task, setState] = useState('')
   const [selected, setSelected] = useState()
   const [open, setopen] = useState(false)
-  const {data, isLoading } = useSWR('gettask',()=> GET("todo"),{initialData:state.tasks,revalidateOnFocus:false})
+  const {data } = useSWR('gettask',()=> GET("todo"),{initialData:state.tasks,revalidateOnFocus:false})
+  react.useEffect(()=>{data?setalltask(data.data.todos):null},[data])
   const handleEdit=(e)=>{
     e.preventDefault()
     edittask(selected._id,selected.title)
