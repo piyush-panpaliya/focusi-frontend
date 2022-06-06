@@ -43,7 +43,7 @@ const Login = () => {
           <input value={data.password} onChange={e=>setdata({...data,password:e.target.value})}  type='password' className='w-[300px] border-2 border-white/50 rounded-lg px-4 py-2 bg-transparent text-white/50 focus:outline-none'/>  
           <div className='flex flex-col items-center'>
             <button className='w-56 py-3 px-4 rounded-xl text-2xl mt-12 border-2 border-white/75 text-white'>LOGIN</button>
-            <Link href='/signup'><p className='hover:mb-0 mb-[2px] text-md mt-3  text-white/75 hover:border-b-2 hover:border-white/50'>Don't have an Account, Create one</p></Link>
+            <Link href='/signup'><p className='hover:mb-0 mb-[2px] text-md mt-3  text-white/75 hover:border-b-2 hover:border-white/50'>Do not have an Account, Create one</p></Link>
           </div>
         </form> 
       </div>

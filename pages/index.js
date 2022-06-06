@@ -25,9 +25,7 @@ export default function Home() {
   }, [])
   
   return (
-    <div
-      style={{"backgroundImage":"linear-gradient(to bottom, #000000 10%, 40%, #0B48A9 66.41329884529114%, 78.20664942264557%, #41C6F5 100%)"}}
-     className='relative h-screen w-screen  overflow-hidden z-[-20]'>
+    <div className='relative h-screen w-screen  overflow-hidden'>
       <Fade when={state.pomodoroStatus}>
       <img draggable={false}  src="/svg/bgp.png" className='max-w-none xl:max-w-[100vw] lg:top-[-12rem]   left-0 z-[-11] absolute '/>
       </Fade>
